@@ -106,10 +106,8 @@ for i in range(1, l):
     tile_positions[0, i] = candidates[0][0]
     last_placed_tile_id = tile_positions[0, i]
     right_edge_hash = edge_hashes[last_placed_tile_id][get_opposite_edge(candidates[0][1])]
-    print(tile_positions)
 
 # Do the left edge.
-print("START LEFT")
 last_placed_tile_id = tile_positions[0, 0]
 bottom_edge_hash = edge_hashes[last_placed_tile_id][get_opposite_edge(unmatched_edges[1])]
 for i in range(1, l):
@@ -125,5 +123,5 @@ for i in range(1, l):
     bottom_edge_hash = edge_hashes[last_placed_tile_id][get_opposite_edge(candidates[0][1])]
 
 
-    print(tile_positions)
+print(tile_positions)
 
