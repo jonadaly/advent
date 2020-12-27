@@ -16,23 +16,25 @@ for i in range(1, N_TURNS+1):
     # print(f"-- move {i} --")
     # print(f"cups: {list(cups)}")
     cups.rotate(-1)
-    result1 = cups.popleft()
-    result2 = cups.popleft()
-    result3 = cups.popleft()
+    target1 = cups.popleft()
+    target2 = cups.popleft()
+    target3 = cups.popleft()
     # print(f"pick up: {result1}, {result2}, {result3}")
     cups.rotate(1)
-    destination = cups[0] - 1
-    while destination in [result1, result2, result3]:
+    destination = cups[0]
+    while True:
         destination -= 1
-    if destination < min(cups):
-        destination = max(cups)
+        if destination < min(cups):
+            destination = max(cups)
+        if destination not in [target1, target2, target3]:
+            break
     # print(f"destination: ", destination)
     rot_count = list(cups).index(destination)
     cups.rotate(-rot_count)
     cups.rotate(-1)
-    cups.appendleft(result3)
-    cups.appendleft(result2)
-    cups.appendleft(result1)
+    cups.appendleft(target3)
+    cups.appendleft(target2)
+    cups.appendleft(target1)
     cups.rotate(rot_count)
 # print("-- final --")
 # print(f"cups: {list(cups)}")
@@ -51,6 +53,7 @@ cup_links[cups[-1]] = cups[0]
 current_cup = cups[0]
 min_cup = min(cups)
 max_cup = max(cups)
+
 for _ in range(N_TURNS):
     target1 = cup_links[current_cup]
     target2 = cup_links[target1]
