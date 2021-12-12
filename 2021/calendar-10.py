@@ -43,5 +43,5 @@ for chunk in chunks:
 
 print(f"Part 1: syntax error score is {syntax_error_score}")
 print(
-    f"Part 1: autocomplete score is {sorted(autocomplete_scores)[int(len(autocomplete_scores)/2)]}"
+    f"Part 2: autocomplete score is {sorted(autocomplete_scores)[int(len(autocomplete_scores)/2)]}"
 )

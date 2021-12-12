@@ -16,9 +16,9 @@ for i_row, row in enumerate(area):
     for i_col, element in enumerate(row):
         is_low = True
         if i_row > 0:
-            is_low = is_low and area[i_row-1, i_col] > element
+            is_low = is_low and area[i_row - 1, i_col] > element
         if i_row < height - 1:
-            is_low = is_low and area[i_row+1, i_col] > element
+            is_low = is_low and area[i_row + 1, i_col] > element
         if i_col > 0:
             is_low = is_low and area[i_row, i_col - 1] > element
         if i_col < width - 1:
@@ -32,4 +32,6 @@ props = measure.regionprops(labels)
 basin_size = sorted([len(p.coords) for p in props], reverse=True)
 
 print(f"Part 1: risk_level is {risk_level}")
-print(f"Part 2: product of largest 3 basins is {basin_size[0] * basin_size[1]*basin_size[2]}")
+print(
+    f"Part 2: product of largest 3 basins is {basin_size[0] * basin_size[1]*basin_size[2]}"
+)

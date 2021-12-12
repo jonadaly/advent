@@ -7,8 +7,8 @@ for i, display_raw in enumerate(displays_raw):
     parts = display_raw.split("|")
     displays[i] = {
         "possibilities": parts[0].strip().split(),
-        "raw_displays":parts[1].strip().split(),
-        "decoded_displays": [None, None, None, None]
+        "raw_displays": parts[1].strip().split(),
+        "decoded_displays": [None, None, None, None],
     }
 
 count = 0
@@ -34,7 +34,7 @@ for i_display, display in displays.items():
         elif len(active_segments) == 6:
             if segments_in_four.issubset(active_segments):
                 display["decoded_displays"][i_digit] = 9
-            elif segments_in_one.issubset( active_segments):
+            elif segments_in_one.issubset(active_segments):
                 display["decoded_displays"][i_digit] = 0
             else:
                 display["decoded_displays"][i_digit] = 6
@@ -50,5 +50,3 @@ for i_display, display in displays.items():
 total = sum([int("".join(map(str, d["decoded_displays"]))) for d in displays.values()])
 print(f"Part 1: unique signal patters appear {count} times in the displays")
 print(f"Part 2: sum of displays is {total}")
-
-
