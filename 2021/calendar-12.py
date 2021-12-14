@@ -28,11 +28,15 @@ def traverse_nodes(
 
 all_paths_part1 = []
 traverse_nodes(all_paths_part1, "start", [], None)
-possible_paths_part1: Set[str] = {",".join(v) for v in all_paths_part1 if v[-1] == "end"}
+possible_paths_part1: Set[str] = {
+    ",".join(v) for v in all_paths_part1 if v[-1] == "end"
+}
 print(f"Part 1: {len(possible_paths_part1)} possible paths")
 
 all_paths_part2 = []
 for node in set(graph.keys()) - {"start", "end"}:
     traverse_nodes(all_paths_part2, "start", [], node)
-possible_paths_part2: Set[str] = {",".join(v) for v in all_paths_part2 if v[-1] == "end"}
+possible_paths_part2: Set[str] = {
+    ",".join(v) for v in all_paths_part2 if v[-1] == "end"
+}
 print(f"Part 2: {len(possible_paths_part2)} possible paths")

@@ -63,5 +63,7 @@ for i, fold in enumerate(folds.strip().split("\n")):
     if i == 0:
         print(f"Part 1: {np.count_nonzero(dots)} visible dots after one fold")
 
-result = "\n".join([row.tobytes().decode("utf8") for row in np.where(dots > 0, "o", ".")])
+result = "\n".join(
+    [row.tobytes().decode("utf8") for row in np.where(dots > 0, "#", " ")]
+)
 print(f"Part 2: Result is\n{result}")
