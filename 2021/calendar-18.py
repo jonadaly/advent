@@ -27,58 +27,63 @@ def build_tree(
     return tree
 
 
-def explode_or_split(t_orig: dict) -> dict:
-    # Order keys by binary representation (alphabetically) to get tree traversal order.
-    # e.g. node 5 (0b101) is to the right of node 2 (0b10), but to the left of node 3 (0b11).
-    t = t_orig.copy()
-    keys = sorted(t.keys(), key=lambda n: "{0:b}".format(n))
+def explode_or_split(tree_original: dict) -> dict:
+    """
+    Here we need to make use of the node IDs to do some tricks. To find the node on the left/right (required for
+    exploding), we order the keys by their binary representation (alphabetically) to get tree traversal order.
+    e.g. node 5 (0b101) is to the right of node 2 (0b10), but to the left of node 3 (0b11).
+    """
+    tree = tree_original.copy()  # Don't mutate the original, silly!
 
-    # First, try to explode
-    for i, k in enumerate(keys):
-        if k < 32:
+    # Sort binary representation of keys alphabetically. This gives node traversal order (depth first, left to right).
+    keys = sorted(tree.keys(), key=lambda n: "{0:b}".format(n))
+
+    # First, try to explode.
+    for i_order, node_id in enumerate(keys):
+        if node_id < 32:
             continue
-        left_value = t[k]
-        right_value = t[k + 1]
-        parent_id = k // 2
-        if i > 0:
+        left_value = tree[node_id]
+        right_value = tree[node_id + 1]
+        parent_id = node_id // 2
+        if i_order > 0:
             # There is a node to the left.
-            t[keys[i - 1]] += left_value
-        if i < len(keys) - 2:
-            # There is a node to the right, other than the other half of the pair.
-            t[keys[i + 2]] += right_value
-        t[parent_id] = 0
-        del t[k]
-        del t[k + 1]
-        return t
+            tree[keys[i_order - 1]] += left_value
+        if i_order < len(keys) - 2:
+            # There is a node to the right (ignoring the other half of the pair).
+            tree[keys[i_order + 2]] += right_value
+        tree[parent_id] = 0
+        del tree[node_id]
+        del tree[node_id + 1]
+        return tree
 
     # Next, try to split.
-    for i, k in enumerate(keys):
-        if t[k] > 9:
-            t[k * 2] = t[k] // 2
-            t[k * 2 + 1] = math.ceil(t[k] / 2)
-            del t[k]
-            return t
+    for i_order, node_id in enumerate(keys):
+        if tree[node_id] > 9:
+            tree[node_id * 2] = tree[node_id] // 2
+            tree[node_id * 2 + 1] = math.ceil(tree[node_id] / 2)
+            del tree[node_id]
+            return tree
 
-    return t_orig
+    return tree
 
 
-def reduce(t: dict) -> dict:
+def reduce(tree: dict) -> dict:
     while True:
-        new_t = explode_or_split(t)
-        if t == new_t:
-            return t
-        t = new_t
+        new_t = explode_or_split(tree)
+        if tree == new_t:
+            return tree
+        tree = new_t
 
 
-def add(t1: dict, t2: dict) -> dict:
+def add(tree1: dict, tree2: dict) -> dict:
     """
     To add two numbers you need them to form each side of a new tree. There's probably some clever maths you
     can do to figure out what the new index of each value is, but I couldn't figure it out so I hacked it. Make
     it binary (e.g. 'Ob1011'), then replace the first digit with '10' for the first number (to make it the left side
     of the tree) and '11' for the second number (to make it the right side of the tree).
     """
-    t1_updated = {int("0b10" + bin(k)[3:], 2): v for k, v in t1.items()}
-    t2_updated = {int("0b11" + bin(k)[3:], 2): v for k, v in t2.items()}
+    t1_updated = {int("0b10" + bin(k)[3:], 2): v for k, v in tree1.items()}
+    t2_updated = {int("0b11" + bin(k)[3:], 2): v for k, v in tree2.items()}
     return reduce({**t1_updated, **t2_updated})
 
 
@@ -114,11 +119,11 @@ assert explode_or_split(build_tree([[3,[2,[1,[7,3]]]],[6,[5,[4,[3,2]]]]])) == bu
 assert explode_or_split(build_tree([[3,[2,[8,0]]],[9,[5,[4,[3,2]]]]])) == build_tree([[3,[2,[8,0]]],[9,[5,[7,0]]]])
 assert add(build_tree([[[[4,3],4],4],[7,[[8,4],9]]]), build_tree([1,1])) == build_tree([[[[0,7],4],[[7,8],[6,0]]],[8,1]])
 assert magnitude(build_tree([[1,2],[[3,4],5]])) == 143
-assert magnitude(build_tree([[[[0,7],4],[[7,8],[6,0]]],[8,1]]))== 1384
-assert magnitude(build_tree([[[[1,1],[2,2]],[3,3]],[4,4]]))== 445
-assert magnitude(build_tree([[[[3,0],[5,3]],[4,4]],[5,5]]))== 791
-assert magnitude(build_tree([[[[5,0],[7,4]],[5,5]],[6,6]]))== 1137
-assert magnitude(build_tree([[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]]))== 3488
+assert magnitude(build_tree([[[[0,7],4],[[7,8],[6,0]]],[8,1]])) == 1384
+assert magnitude(build_tree([[[[1,1],[2,2]],[3,3]],[4,4]])) == 445
+assert magnitude(build_tree([[[[3,0],[5,3]],[4,4]],[5,5]])) == 791
+assert magnitude(build_tree([[[[5,0],[7,4]],[5,5]],[6,6]])) == 1137
+assert magnitude(build_tree([[[[8,7],[7,7]],[[8,6],[7,7]]],[[[0,7],[6,6]],[8,7]]])) == 3488
 test_numbers_raw = Path("18-example.txt").read_text().strip().split("\n")
 test_numbers = [build_tree(ast.literal_eval(r)) for r in test_numbers_raw]
 assert magnitude(sum_all(test_numbers)) == 4140
