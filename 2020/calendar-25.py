@@ -1,11 +1,4 @@
 from pathlib import Path
-from typing import List, Tuple, Dict, Set
-import re
-from collections import deque
-import hashlib
-from itertools import chain
-import math
-import matplotlib.pyplot as plt
 
 raw_lines = Path("25.txt").read_text().strip().split("\n")
 card_public_key = int(raw_lines[0])
