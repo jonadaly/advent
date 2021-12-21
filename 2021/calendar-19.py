@@ -1,7 +1,7 @@
 import itertools
 import math
 import re
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from pathlib import Path
 from typing import Dict
 
@@ -45,11 +45,16 @@ for scanner_raw in scanners_raw:
         distances.append(distance)
         fingerprints[(x1, y1, z1)].append(distance)
         fingerprints[(x2, y2, z2)].append(distance)
-    scanners.append({"id": scanner_id, "distances": distances, "raw_coordinates": coordinates, "fingerprints": fingerprints})
+    scanners.append(
+        {
+            "id": scanner_id,
+            "distances": distances,
+            "coordinates": coordinates,
+            "fingerprints": fingerprints,
+        }
+    )
 
-scanners[0]["aligned_coordinates"] = scanners[0]["raw_coordinates"].copy()
 scanners[0]["scanner_location"] = (0, 0, 0)
-scanners[0]["aligned_fingerprints"] = scanners[0]["fingerprints"].copy()
 aligned = [scanners[0]]
 remaining = deque(scanners[1:])
 while remaining:
@@ -63,10 +68,10 @@ while remaining:
 
             # alignment
             matched_points = []
-            for p1 in scanner_to_align["raw_coordinates"]:
-                distances = scanner_to_align['fingerprints'][p1]
-                for p2 in a["aligned_coordinates"]:
-                    if len(set(distances) & set(a["aligned_fingerprints"][p2])) >= 11:
+            for p1 in scanner_to_align["coordinates"]:
+                distances = scanner_to_align["fingerprints"][p1]
+                for p2 in a["coordinates"]:
+                    if len(set(distances) & set(a["fingerprints"][p2])) >= 11:
                         matched_points.append((p1, p2))
             assert len(matched_points) >= 12
 
@@ -76,7 +81,7 @@ while remaining:
             correct_rotation = None
             offset = None
             for rot in rotations:
-                transformed = np.subtract(y, x@rot)
+                transformed = np.subtract(y, x @ rot)
                 if len(set(transformed.flatten())) <= 3:
                     # found the matching rotation.
                     correct_rotation = rot
@@ -84,28 +89,32 @@ while remaining:
                     break
 
             coordinates_lookup = {
-                p: tuple(np.add(offset, p@correct_rotation)) for p in scanner_to_align["raw_coordinates"]
+                p: tuple(np.add(offset, p @ correct_rotation))
+                for p in scanner_to_align["coordinates"]
             }
 
             aligned_scanner = {
                 "id": scanner_to_align["id"],
                 "distances": scanner_to_align["distances"],
-                "raw_coordinates": scanner_to_align["raw_coordinates"],
-                "aligned_coordinates": [coordinates_lookup[c] for c in scanner_to_align["raw_coordinates"]],
-                "aligned_fingerprints": {coordinates_lookup[k]:v for k, v in scanner_to_align["fingerprints"].items()},
-                "fingerprints": scanner_to_align["fingerprints"],
+                "coordinates": [
+                    coordinates_lookup[c] for c in scanner_to_align["coordinates"]
+                ],
+                "fingerprints": {
+                    coordinates_lookup[k]: v
+                    for k, v in scanner_to_align["fingerprints"].items()
+                },
                 "scanner_location": offset,
             }
 
             aligned.append(aligned_scanner)
-            print(f'Scanner {aligned_scanner["id"]} at {aligned_scanner["scanner_location"]}')
+            # print(f'Scanner {aligned_scanner["id"]} at {aligned_scanner["scanner_location"]}')
             break
 
     if not match_found:
-        print(f"No match found for scanner {scanner_to_align['id']}")
+        # print(f"No match found for scanner {scanner_to_align['id']}")
         remaining.append(scanner_to_align)
 
-all_beacons = set().union(*[s["aligned_coordinates"] for s in aligned])
+all_beacons = set().union(*[s["coordinates"] for s in aligned])
 print(f"Part 1: there are {len(all_beacons)} beacons in total")
 
 scanner_locations = [s["scanner_location"] for s in aligned]
@@ -114,9 +123,3 @@ for b1, b2 in itertools.combinations(scanner_locations, r=2):
     manhattan_distance = abs(b1[0] - b2[0]) + abs(b1[1] - b2[1]) + abs(b1[2] - b2[2])
     max_manhattan = max(max_manhattan, manhattan_distance)
 print(f"Part 2: max distance between scanners is {max_manhattan}")
-
-
-
-
-
-
