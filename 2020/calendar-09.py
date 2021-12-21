@@ -4,7 +4,7 @@ import itertools
 import numpy as np
 
 NUM_PREAMBLE = 25
-numbers = list(map(int, Path("9.txt").read_text().strip().split("\n")))
+numbers = list(map(int, Path("09.txt").read_text().strip().split("\n")))
 
 # Part 1
 buffer = collections.deque(numbers[:NUM_PREAMBLE])

@@ -2,7 +2,7 @@ from pathlib import Path
 
 import numpy as np
 
-raw_depths = Path("1.txt").read_text().strip().split("\n")
+raw_depths = Path("01.txt").read_text().strip().split("\n")
 depths = list(map(int, raw_depths))
 
 diffs = np.diff(depths)

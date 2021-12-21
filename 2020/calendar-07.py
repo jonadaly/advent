@@ -6,7 +6,7 @@ import numpy as np
 
 graph = Graph(host="localhost")
 graph.delete_all()
-raw_rules = Path("7-example.txt").read_text().strip()
+raw_rules = Path("07-example.txt").read_text().strip()
 rules = re.findall(r"^(.+) bags contain (.+)\.$", raw_rules, re.M)
 
 for outer_colour, _ in rules:

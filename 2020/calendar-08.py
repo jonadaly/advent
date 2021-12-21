@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 
-instructions = Path("8.txt").read_text().strip().split("\n")
+instructions = Path("08.txt").read_text().strip().split("\n")
 
 def execute(instructions):
     accum = 0

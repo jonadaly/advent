@@ -14,7 +14,7 @@ REQUIRED_FIELDS = {
     "pid": r"^\d{9}$",
 }
 
-passports = Path("4.txt").read_text().strip().split("\n\n")
+passports = Path("04.txt").read_text().strip().split("\n\n")
 
 # Part 1
 valid = 0

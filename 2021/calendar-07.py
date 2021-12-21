@@ -3,7 +3,7 @@ from typing import Callable
 
 import numpy as np
 
-positions_raw = Path("7.txt").read_text().strip().split(",")
+positions_raw = Path("07.txt").read_text().strip().split(",")
 positions = list(map(int, positions_raw))
 triangle: Callable = np.vectorize(lambda n: (n * (n + 1)) / 2.0)
 

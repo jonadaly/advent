@@ -2,7 +2,7 @@ import re
 from copy import copy
 from pathlib import Path
 
-report_values_raw = Path("3.txt").read_text().strip().split("\n")
+report_values_raw = Path("03.txt").read_text().strip().split("\n")
 
 N_DIGITS = len(report_values_raw[0])
 N_VALUES = len(report_values_raw)

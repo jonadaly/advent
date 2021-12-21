@@ -1,6 +1,6 @@
 from pathlib import Path
 
-raw_fish = list(map(int, Path("6.txt").read_text().strip().split(",")))
+raw_fish = list(map(int, Path("06.txt").read_text().strip().split(",")))
 fish = {i: sum(1 for fish in raw_fish if fish == i) for i in range(9)}
 for i in range(256):
     fish = {

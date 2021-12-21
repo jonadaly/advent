@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
-vents_raw = Path("5.txt").read_text().strip().split("\n")
+vents_raw = Path("05.txt").read_text().strip().split("\n")
 
 vents = []
 for vent_raw in vents_raw:

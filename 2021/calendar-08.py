@@ -1,6 +1,6 @@
 from pathlib import Path
 
-displays_raw = Path("8.txt").read_text().strip().split("\n")
+displays_raw = Path("08.txt").read_text().strip().split("\n")
 
 displays: dict = {}
 for i, display_raw in enumerate(displays_raw):

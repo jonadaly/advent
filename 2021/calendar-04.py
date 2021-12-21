@@ -3,7 +3,7 @@ from pathlib import Path
 
 import numpy as np
 
-bingo_raw = Path("4.txt").read_text().strip()
+bingo_raw = Path("04.txt").read_text().strip()
 draw_numbers_raw, boards_raw = bingo_raw.split("\n", 1)
 draw_numbers = draw_numbers_raw.strip().split(",")
 

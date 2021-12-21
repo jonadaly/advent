@@ -1,6 +1,6 @@
 from pathlib import Path
 
-raw_text = Path("1.txt").read_text().strip()
+raw_text = Path("01.txt").read_text().strip()
 
 numbers = [int(n) for n in raw_text.split("\n")]
 

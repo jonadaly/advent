@@ -1,7 +1,7 @@
 import re
 from pathlib import Path
 
-raw_instructions = Path("2.txt").read_text().strip().split("\n")
+raw_instructions = Path("02.txt").read_text().strip().split("\n")
 
 horizontal = 0
 depth = 0

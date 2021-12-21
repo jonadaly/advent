@@ -3,7 +3,7 @@ import string
 
 total_any = 0
 total_all = 0
-for group in Path("6.txt").read_text().strip().split("\n\n"):
+for group in Path("06.txt").read_text().strip().split("\n\n"):
     group_answers_any = set()
     group_answers_all = set(string.ascii_lowercase)
     for person in group.split("\n"):

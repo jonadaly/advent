@@ -20,7 +20,7 @@ def count_trees(slope_right: int, slope_down: int) -> int:
     return n_trees
 
 
-raw_slope = Path("3.txt").read_text().strip().split("\n")
+raw_slope = Path("03.txt").read_text().strip().split("\n")
 
 slope = np.chararray((len(raw_slope), len(raw_slope[0])), itemsize=1)
 for ind, row in enumerate(raw_slope):

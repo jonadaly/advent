@@ -5,7 +5,7 @@ from typing import Tuple
 input_raw = Path("21.txt").read_text().strip().split("\n")
 
 
-### Part 1 ###
+# Part 1
 
 
 def practice_die():
@@ -38,7 +38,7 @@ while True:
 print(f"Part 1: product is {total_rolls*min(p1_score, p2_score)}")
 
 
-### Part 2 ###
+# Part 2
 
 
 # Frequency of possible sums of three dice rolls.

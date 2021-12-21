@@ -1,7 +1,7 @@
 from pathlib import Path
 import re
 
-raw_text = Path("2.txt").read_text().strip()
+raw_text = Path("02.txt").read_text().strip()
 
 rows = raw_text.split("\n")
 

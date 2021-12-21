@@ -3,7 +3,7 @@ from pathlib import Path
 import numpy as np
 from skimage import measure
 
-raw_area = Path("9.txt").read_text().strip().split("\n")
+raw_area = Path("09.txt").read_text().strip().split("\n")
 
 height = len(raw_area)
 width = len(raw_area[0])

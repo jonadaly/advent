@@ -1,6 +1,6 @@
 import math
 
-with open('input-1.txt', 'r') as f:
+with open('input-01.txt', 'r') as f:
     raw_input = f.readlines()
 
 sum = 0
