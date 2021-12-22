@@ -67,7 +67,7 @@ for irow, row in enumerate(lines):
 # print(f"Part 1: {n_active} cubes are active")
 
 # Part 2
-NEARBY: List[Tuple[int, int, int]] = []
+NEARBY: List[Tuple[int, int, int, int]] = []
 for i in [-1, 0, 1]:
     for j in [-1, 0, 1]:
         for k in [-1, 0, 1]:
