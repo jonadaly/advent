@@ -1,4 +1,4 @@
-from collections import deque, defaultdict
+from collections import defaultdict, deque
 from pathlib import Path
 
 instructions_raw = Path("24.txt").read_text().strip().split("\n")
@@ -95,7 +95,9 @@ def solve(w_range):
         z_targets_new = set()
         for w in w_range:
             for zt in z_targets:
-                z_possibilities = f_reverse(w, zt, a_values[i], b_values[i], c_values[i])
+                z_possibilities = f_reverse(
+                    w, zt, a_values[i], b_values[i], c_values[i]
+                )
                 for zp in z_possibilities:
                     z_targets_new.add(zp)
                     # Overwrite as new results will always be more complete / higher in value.

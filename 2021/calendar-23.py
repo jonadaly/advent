@@ -3,7 +3,6 @@ from typing import List, Tuple
 import networkx as nx
 from networkx import shortest_path, shortest_path_length
 
-
 BANNED = {2, 4, 6, 8}
 HALL_POS_LOOKUP = {"A": 2, "B": 4, "C": 6, "D": 8}
 COST = {"A": 1, "B": 10, "C": 100, "D": 1000}
