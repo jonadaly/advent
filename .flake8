@@ -1,0 +1,9 @@
+[flake8]
+extend-ignore=E203, E501, W503
+max-line-length=88
+max-complexity=18
+select=B,C,E,F,W,T4,B9
+per-file-ignores =
+     advent_2021/calendar-18.py: E231
+     advent_2018/calendar-15.py: C901
+     advent_2018/calendar-13.py: C901

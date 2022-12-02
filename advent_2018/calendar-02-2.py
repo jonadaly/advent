@@ -1,0 +1,290 @@
+from itertools import combinations
+
+inputs = """oiwcdpbseqgxryfmlpktnupvza
+oiwddpbsuqhxryfmlgkznujvza
+ziwcdpbsechxrvfmlgktnujvza
+oiwcgpbseqhxryfmmgktnhjvza
+owwcdpbseqhxryfmlgktnqjvze
+oiscdkbseqhxrffmlgktnujvza
+oiwcdibseqoxrnfmlgktnujvza
+oiwcdpbsejhxryfmlektnujiza
+oewcdpbsephxryfmlgkwnujvza
+riwcdpbseqhxryfmlgktnujzaa
+omwcdpbseqwxryfmlgktnujvqa
+oiwcdqqneqhxryfmlgktnujvza
+oawcdvaseqhxryfmlgktnujvza
+oiwcdabseqhxcyfmlkktnujvza
+oiwcdpbseqhxryfmlrktrufvza
+oiwcdpbseqhxdyfmlgqtnujkza
+oiwcdpbseqhxrmfolgktnujvzy
+oiwcdpeseqhxnyfmlgktnejvza
+oiwcdpbseqhxrynmlaktlujvza
+oiwcdpbseqixryfmlektncjvza
+liwtdpbseqhxryfylgktnujvza
+ouwcdpbszqhxryfmlgktnajvza
+oiwzdpbseqhxryfmngktnujvga
+wiwcfpbseqhxryfmlgktnuhvza
+oiwcdpbselhfryfmlrktnujvza
+oywcdpbveqhxryfmlgktnujdza
+oiwcdpbsiqhxryfmqiktnujvza
+obwcdhbseqhxryfmlgktnujvqa
+oitcdpbseqhfryfmlyktnujvza
+oiwcdpbseqhxryfmlnutnujqza
+oiwcdpbseqhxnyfmlhktnujtza
+oiwcdpbseqhbryfmlgkunuwvza
+oiwcopbseqhiryfmlgktnkjvza
+oiwcdpsseqhxryfklrktnujvza
+oiwcdpsrsqhxryfmlgktnujvza
+oiwcdpbsyqrxryfmlgktnujvzc
+ojwcepbseqhxryfmlgktnujvfa
+oiwcdpbseqhxrlfmlgvtnujvzr
+oiycdpbsethsryfmlgktnujvza
+eiwcdpbseqwxryfmlgktnujcza
+oiocdpbseqhxryfxlgktaujvza
+qiwydpbseqhpryfmlgktnujvza
+ziwcdpbseqhxryfmlgktsuuvza
+oiwcdpbseqheryfmygxtnujvza
+oiwidpbseqhxryfulgktnujvzm
+oiscdpdseqhxryfmlgktnujvya
+oiwmypbseqhxryfmlgktnuxvza
+oizcwbbseqhxryfmlgktnujvza
+oiwcdpbseqpxryfmlgxfnujvza
+oiwpdpbscqhxryxmlgktnujvza
+oiwcdpbseqhxrifrlgkxnujvza
+oiwcdpbsrqhxrifmlgktnzjvza
+tiwcdpbseqhxryfmegkvjujvza
+oiwcddbseqhxryfingktnujvza
+oiwcdpbsiqhiryfmlgktnucvza
+oiwcipbseqhxrkfmlgktnuvvza
+kiwcdpbseqhxryfmlbkonujvza
+qiwcdhbsedhxryfmlgktnujvza
+siwcdpbseqhxryfmsgktnujvua
+oqwcdpbseqhxryfmlyktndjvza
+oiwcqnbseehxryfmlgktnujvza
+oiwcdybseqhxryfmlgbtnujvia
+oiwcdpbsejhxryfdlgktngjvza
+oawcdpbseqhxrbfmlkktnujvza
+oilcdpbseqhhrjfmlgktnujvza
+oibcdpbseqhxryfmngktnucvza
+niwcdpbseqhxryfmlgkuaujvza
+oiwcdpbseqhxryfmqgmtnujvha
+oiwcdpbseqhcryfxlgktnzjvza
+oiwcdpaseqhxryfmqgktnujvzl
+oiwcdpbseqhxjyfmlgkonujvzx
+oiwmdzbseqlxryfmlgktnujvza
+oiwhdpbsexhxryfmlgktnujvzw
+oiwctpbseqhxryfmlgktnummza
+oiwcdpbseqoxrydmlgktnujvoa
+oiwkdpvseqhxeyfmlgktnujvza
+oixcdpbsemhxryfmlgctnujvza
+oimcdpbseqhxryfmlgktnujvlr
+oiwcdpbseehxrywmlgktnejvza
+oiwcdpbseqoxhyfmlgktnujyza
+oiwcdpbsethxryfmlgktnrjvxa
+oiwcdpbxeqhxryfmlgktnrjvzb
+ogeadpbseqhxryfmlgktnujvza
+eiwcdpbseqhxryfmlgktnvuvza
+oiwcdpbseqhxryfmlgktnujaxv
+siwcdpbsuqhxryfmlgktnuavza
+oixcdpbseqhxryfmlgatnujvzy
+oiwcdpbzeghmryfmlgktnujvza
+oiwcdpbieqhxryfmlgktyujvzr
+oiwcdpbseqhxeyfhlgktngjvza
+oiwcdpbseqhjoyrmlgktnujvza
+iiwcdpbseqhxryfmwhktnujvza
+oixcdpbsiqhxryfmagktnujvza
+oiwcdpfljqhxryfmlgktnujvza
+oivcdpbseqhxrqfmlgktnujvca
+ovwcdpbseqhxzyfmlgkenujvza
+oiwxdpgseqhxryfmlgktnhjvza
+oibcdpbbeohxryfmlgktnujvza
+oiwcrpbseqhxrygmlgwtnujvza
+jiwcdpbseqkxryfmlgntnujvza
+oiwcdbbseqhxrywmlgktnujvra
+oiwcdpbteqyxoyfmlgktnujvza
+oiwcdjbsvqvxryfmlgktnujvza
+obwcdukseqhxryfmlgktnujvza
+oifcdpdseqhxryfmlgktnujsza
+oiwcdpbseqhxryfalgktnujyda
+oiwcwpbseqhxrnfmkgktnujvza
+oswcdpbsethcryfmlgktnujvza
+oiwcdpbieqhxryfmlgktnuoiza
+oiwcdibsehhxryfmzgktnujvza
+oisjdpbseqhxryfmfgktnujvza
+oiwcjpbseqkxqyfmlgktnujvza
+obwcdpbshqhgryfmlgktnujvza
+oiwcspbseqhxryxmlgktnujvzl
+oiwcdvbswqhxryfmlgklnujvza
+oiwcdhuseqhxryfmlgdtnujvza
+oiwcdpbkeqdxryfmlgktnujvzv
+oiwcdpzseqhxcyfmlgksnujvza
+oiwcdpbseqhxryfmbkkvnujvza
+qiwcdpbseqhxrnfmlgktnujvha
+okwcdpbseqhxryfmdgktgujvza
+oiwcdpbkeqhxryfmldktnujvzu
+oiwctpxseqhxgyfmlgktnujvza
+oiwcdpbseqhxrykmlgktnujita
+oiwcdpbseqhxryfmldktyujnza
+oiwcdpbszqhxrjfmlgktnuqvza
+oiwcdpbeeqhxrykmlgktnujrza
+oiwcvpbseqhxryhmlgwtnujvza
+oiwcdpbpeehxryfmlgktnujvzz
+oiwcdbbsxqhxyyfmlgktnujvza
+oiwkdpbseqhxryfplgktnujeza
+opwcdpbseqhxdyfmlgctnujvza
+oowcdpbseqhnryfmlgktnujvga
+oawzdibseqhxryfmlgktnujvza
+oiwcdpbfeqzxrjfmlgktnujvza
+oiwcdpbseqaxryfmlgkonulvza
+oiacdpbseqvxryfmlgktvujvza
+oiwudpbseqhxryfwlgktnujvka
+oiwcdpbjeqhxryfymgktnujvza
+oiwcdpbweqhxrynmlgktnujaza
+oiwcdpbseqdxryfclgvtnujvza
+oiwcdppseqhxryfmlgmtzujvza
+oiwcdpbseqhxrhfelektnujvza
+kiwcdpbsnqhxryfmegktnujvza
+oiwcdpbseqpxryfmlgzwnujvza
+eiwcdpbseqnxryfplgktnujvza
+oiwcdbbseqhxryfmlmktnujvha
+oiwcdpbseqhxryfmlgktjhjvka
+oiwcdpbseqhxnyfylgktnujvzs
+oiwcdpbbxqhxryfmzgktnujvza
+opwcdpbseqhfryfmlgktnujzza
+oiwcdpbsjqpxryfmtgktnujvza
+oiwcdpbseqhyqbfmlgktnujvza
+oxwcdpbseqhxrffmlgktiujvza
+oiwcdpbseqhxgyfmlgytnujvzq
+oiwidpbseqhxryfmlgxtnujvzd
+oiwcdpbshqhxryzmlpktnujvza
+oifcdpbseqbxryfmlgktdujvza
+biwcdzbseqhxtyfmlgktnujvza
+oiwcdpbswqhxryfmlgutnujvca
+xiwcdpbseqhxryxmlnktnujvza
+oiwcdpzseqhxryfrlgktdujvza
+oiwudpbseqhxryfmlgkqnurvza
+oiwqdpbseihiryfmlgktnujvza
+iiwjdpbseqhxryamlgktnujvza
+oiwcdplseqhqryfmmgktnujvza
+oiwcdppseqhxrmfmlgklnujvza
+oiwcdobseqhxryfmmgkttujvza
+odwcdpbseqhxryfmlgktnujvyk
+oiwcdpkseqhxrhfmlgktntjvza
+oiocdpbseqhxryfmlgjknujvza
+oiicdpbieqhxryfmlgksnujvza
+oiwcdpbseqhxryemlgktnujdla
+oiwcdpbseqdxryfmlgktsujvzt
+oiwcdcksnqhxryfmlgktnujvza
+oowcdpbseqhxryfmlgsfnujvza
+oawcdpbseqhxryfmljktnuevza
+oiwcdpbsaqhxrffmzgktnujvza
+oiwcipbseqhcryfmlgktnujvga
+oiwcdpbsewhxrbfmlgktnuuvza
+oiwcdpbsewhxryfmlgkunujvzc
+oiwcdpbseqhxryfmlgktiujkga
+jiwcdpbseqhxrlfmlgktnurvza
+tiwcdpbseqoxryfmliktnujvza
+oiwcdpbsenhxryfmlgkskujvza
+oiwcdpbseqhxvyfmlhktoujvza
+oiwcdpbseqhxeyfmlgmtnunvza
+oiwcdpbseqhxdyfmloktnujvzu
+oiwcdpbseqgxryfmlgkynejvza
+oudcdpbseqhxryfmlgktmujvza
+oiwcdpbseqhxryfmvgktnucvzc
+oiwcdpbseqhxrysalgwtnujvza
+odwodpbseqhgryfmlgktnujvza
+oiwcdpbseqheryzmlgktnujgza
+oiwcdpbseqhxryfalgwtnujvba
+oiwcdpbseqhxryfmlgtdnuhvza
+oiocdpbseqhxrefulgktnujvza
+kiwcdpbseqhxrywolgktnujvza
+niwcdpbseksxryfmlgktnujvza
+oiwcdybseqexryfalgktnujvza
+oiwcdpbbeqhxryamlgktnujpza
+oiecdqbseqhxryfmlgktnujcza
+oiwcdpbsqqhxlyfmlpktnujvza
+oiwcdpbsaqheryfmlgktnujlza
+oiecdpbseqhxryfmlgkknujvzz
+oiwcapbsdqhxryfmlgktvujvza
+ojwcdxbseqhxryfmlgktrujvza
+oiwhdpbseqvxrzfmlgktnujvza
+oiwcdppseqhtryfmlgktnujvzs
+oikcdpbsfqhxryfmdgktnujvza
+owwczpbseqhxryfilgktnujvza
+oifwdpbseqhxryfmlgktnujfza
+oowcdpbseqhxrprmlgktnujvza
+oiwcapbseqhxryfmjgktnujvze
+oiwcdpaseqhdrybmlgktnujvza
+tiwcdpbseqhxryfmlgkvjujvza
+xiwcdpbseqhoryfmlgktnujvqa
+eiwrdpbsyqhxryfmlgktnujvza
+oiwcdpbseqhxranmlgktnujvzt
+oiwcdpbseqhxryfqlgktnudaza
+oiwcdpbsvqhxrywmlgktnsjvza
+oewcdpbseqhxryfmlgkunujvma
+oiwcdpbseqhjrywmlgktnujvzb
+omwcdpbseqhxryfmlgktwujsza
+oiwcdpbyxqhxryfmlgrtnujvza
+oiwidpbseqhxryfhlgktnunvza
+oqwcdpbweqhxrybmlgktnujvza
+oiwcdqbseqhxryfrlgktnujfza
+oiacdpbseqhdryfmlgktaujvza
+oiwcdpbstqhxmyfmlgktyujvza
+oiwcdpbseqhxeyfclgktjujvza
+wiwcdpeseqhxryfmlgktnujvzx
+viwcdpbseqhxryfmlgvtvujvza
+oircdpbseqhxcyfmlgktnujvma
+miwcdpbseqtwryfmlgktnujvza
+oiwcppbseqhxcyfmlgxtnujvza
+giwcrpbseqhxryfmlgktnudvza
+onwcvpbseqhxryfmlgktnujqza
+oiwcipbseqhxryfmlgitnuqvza
+oiwcdpbseqhxryjmlgkonufvza
+oiwnwpbseqhxtyfmlgktnujvza
+oiwcypbseqhxryfmlgetnujvzv
+oiwcdpbseqhxryqmljktnkjvza
+olwcdpbseqhxryfmlgkenujvba
+biwcdpbseqwxrywmlgktnujvza
+oiwcdpbsevhmryjmlgktnujvza
+oiwcdpbseqhxryfmlzktnkjvzv
+oiwudpbseqhxrefmlgktnujvia
+oiicdpbseqhxryfdloktnujvza
+oihcjpbsxqhxryfmlgktnujvza"""
+
+# inputs = """abcde
+# fghij
+# klmno
+# pqrst
+# fguij
+# axcye
+# wvxyz"""
+
+
+serials = inputs.split("\n")
+
+for combo in combinations(serials, 2):
+
+    count = 0
+    for i in range(len(combo[0])):
+        if combo[0][i] == combo[1][i]:
+            count += 1
+
+    if count == 25:
+        print(combo[0], combo[1])
+
+    # intersec = set(combo[0]).intersection(set(combo[1]))
+
+    # if len(intersec) == 25:
+    # 	print(combo[0], combo[1])
+
+    # common_set_1 = set(combo[0]) - set(combo[1])
+    # common_set_2 = set(combo[1]) - set(combo[0])
+    # if len(common_set_1) == 1 and len(common_set_2) == 1:
+    # 	char_first = common_set_1.pop()
+    # 	char_second = common_set_2.pop()
+    # 	first_idx = combo[0].find(char_first)
+    # 	second_idx = combo[1].find(char_second)
+    # 	print(first_idx, second_idx)
+    # 	if first_idx == second_idx:
+    # 		print(combo[0], combo[1])
+    # 		break
