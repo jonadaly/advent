@@ -1,14 +1,13 @@
 import itertools
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Optional
 
 terminal: list[str] = Path("day-07-input.txt").read_text().strip().split("\n")
 
 
 @dataclass
 class Directory:
-    parent: "Optional[Directory]"
+    parent: "Directory" | None
     path: Path
     children: list["Directory"] = field(default_factory=list)
     files: list[int] = field(default_factory=list)
