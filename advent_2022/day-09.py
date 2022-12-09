@@ -22,12 +22,6 @@ def track_tail(knots: int) -> set[tuple[int, int]]:
             for i in range(1, knots):
                 diff = (pos[i - 1][0] - pos[i][0], pos[i - 1][1] - pos[i][1])
                 match (diff):
-                    case (0, 0) | (0, 1) | (1, 0) | (1, 1) | (0, -1) | (-1, 0) | (
-                        -1,
-                        -1,
-                    ) | (-1, 1) | (1, -1):
-                        # adjacent
-                        pass
                     case (0, 2):
                         pos[i] = (pos[i][0], pos[i][1] + 1)
                     case (0, -2):
@@ -44,6 +38,8 @@ def track_tail(knots: int) -> set[tuple[int, int]]:
                         pos[i] = (pos[i][0] - 1, pos[i][1] + 1)
                     case (-1, -2) | (-2, -1) | (-2, -2):
                         pos[i] = (pos[i][0] - 1, pos[i][1] - 1)
+                    case _:
+                        "adjacent - no-op"
             visited.add(pos[-1])
     return visited
 
