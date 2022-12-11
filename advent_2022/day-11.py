@@ -73,4 +73,4 @@ def simulate(monkeys: dict[int, Monkey], *, rounds: int, relief: int) -> int:
 
 
 print(f"Part 1: Monkey business is {simulate(monkeys, rounds=20, relief=3)}")
-print(f"Part 1: Monkey business is {simulate(monkeys, rounds=10_000, relief=1)}")
+print(f"Part 2: Monkey business is {simulate(monkeys, rounds=10_000, relief=1)}")
