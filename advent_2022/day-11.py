@@ -22,8 +22,8 @@ class Monkey:
     _operator: str
     operand: str
     test_divisor: int
-    test_true: int
-    test_false: int
+    target_pass: int
+    target_fail: int
     inspections: int = 0
 
     def inspect(self, old: int) -> int:
@@ -32,7 +32,7 @@ class Monkey:
         return _op(old, old if self.operand == "old" else int(self.operand))
 
     def target(self, x: int) -> int:
-        return self.test_true if x % self.test_divisor == 0 else self.test_false
+        return self.target_pass if x % self.test_divisor == 0 else self.target_fail
 
 
 monkeys_raw: list[str] = Path("day-11-input.txt").read_text().strip().split("\n\n")
@@ -47,8 +47,8 @@ for id, monkey_raw in enumerate(monkeys_raw):
         _operator=_operator,
         operand=operand,
         test_divisor=int(monkey_lines[3].split("by ")[-1]),
-        test_true=int(monkey_lines[4].split("monkey ")[-1]),
-        test_false=int(monkey_lines[5].split("monkey ")[-1]),
+        target_pass=int(monkey_lines[4].split("monkey ")[-1]),
+        target_fail=int(monkey_lines[5].split("monkey ")[-1]),
     )
 
 common_factor: int = reduce(
