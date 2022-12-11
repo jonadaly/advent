@@ -51,9 +51,7 @@ for id, monkey_raw in enumerate(monkeys_raw):
         target_fail=int(monkey_lines[5].split("monkey ")[-1]),
     )
 
-common_factor: int = reduce(
-    (lambda x, y: x * y), [m.test_divisor for m in monkeys.values()]
-)
+common_factor: int = reduce(operator.mul, [m.test_divisor for m in monkeys.values()])
 
 
 def simulate(monkeys: dict[int, Monkey], *, rounds: int, relief: int) -> int:
