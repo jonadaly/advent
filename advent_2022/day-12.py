@@ -44,7 +44,7 @@ class CustomFinder(AStarFinder):
         ]
 
 
-def do_it(start: tuple[int, int], finish: tuple[int, int]) -> int:
+def find_path(start: tuple[int, int], finish: tuple[int, int]) -> int:
     grid = Grid(matrix=np.ones(TERRAIN.shape))
     path, _ = CustomFinder().find_path(
         grid.node(start[1], start[0]), grid.node(finish[1], finish[0]), grid
@@ -52,14 +52,14 @@ def do_it(start: tuple[int, int], finish: tuple[int, int]) -> int:
     return len(path) - 1
 
 
-print(f"Part 1: took {do_it(start, finish)} steps from {start} to {finish}")
+print(f"Part 1: took {find_path(start, finish)} steps from {start} to {finish}")
 
 # Part 2 takes about 10 seconds.
 min_steps = math.inf
 for (i, j) in product(range(TERRAIN.shape[0]), range(TERRAIN.shape[1])):
     if TERRAIN[i, j] != "a":
         continue  # Not a start point
-    steps = do_it((i, j), finish)
+    steps = find_path((i, j), finish)
     if steps == -1:
         continue  # no path
     min_steps = min(min_steps, steps)
