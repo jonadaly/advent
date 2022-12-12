@@ -20,8 +20,6 @@ TERRAIN[TERRAIN == "E"] = "z"
 
 
 class CustomFinder(AStarFinder):
-    counter = 0
-
     def __init__(self):
         super().__init__(
             heuristic=null,
