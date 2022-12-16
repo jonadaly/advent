@@ -34,11 +34,11 @@ class State:
     total: int = 0
 
 
-def solve_for(
-    position: str, remaining_minutes: int, opened_valves: tuple[str, ...]
+def find_paths(
+    position: str, remaining: int, opened_valves: tuple[str, ...]
 ) -> Generator[tuple[str, ...], None, None]:
     """
-    Yields possible paths from the given position, with the given remaining minutes
+    Yields possible paths from the given position, with the given remaining time
     and already-opened valves.
     """
     for next in [
@@ -48,12 +48,12 @@ def solve_for(
             v.id != position
             and v.id not in opened_valves
             and v.flow_rate > 0
-            and distances[position][v.id] < remaining_minutes
+            and distances[position][v.id] < remaining
         )
     ]:
-        yield from solve_for(
+        yield from find_paths(
             next.id,
-            remaining_minutes - distances[position][next.id] - 1,
+            remaining - distances[position][next.id] - 1,
             (*opened_valves, next.id),
         )
     yield opened_valves
@@ -91,24 +91,24 @@ for (i, j, k) in product(valves, valves, valves):
 
 # Part 1: just need the best scoring path.
 paths_p1: list[tuple[str, ...]] = list(
-    solve_for(position="AA", remaining_minutes=30, opened_valves=())
+    find_paths(position="AA", remaining=30, opened_valves=())
 )
 print(
     f"Part 1: max pressure release is {max(score_path(path, remaining=30) for path in paths_p1)}"
 )
 
 # Part 2: need to find a combination of human and elephant paths that don't involve the same valves.
-paths_p2 = list(solve_for(position="AA", remaining_minutes=26, opened_valves=()))
+paths_p2 = list(find_paths(position="AA", remaining=26, opened_valves=()))
 # Have to optimise because it would take too long otherwise. We only care about
 # the best scoring path for each set of valves - the others will do worse later.
-optimised: dict[frozenset[str], int] = defaultdict(int)
+optimised_paths: dict[frozenset[str], int] = defaultdict(int)
 for path in paths_p2:
     score: int = score_path(path, remaining=26)
-    optimised[frozenset(path)] = max(optimised[frozenset(path)], score)
+    optimised_paths[frozenset(path)] = max(optimised_paths[frozenset(path)], score)
 
 max_score: int = max(
-    optimised[frozenset(human)] + optimised[frozenset(elephant)]
-    for human, elephant in product(optimised.keys(), optimised.keys())
+    optimised_paths[frozenset(human)] + optimised_paths[frozenset(elephant)]
+    for human, elephant in product(optimised_paths.keys(), optimised_paths.keys())
     if not set(human) & (set(elephant))
 )
 print(f"Part 2: max pressure release is {max_score}")
