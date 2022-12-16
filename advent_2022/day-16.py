@@ -37,6 +37,10 @@ class State:
 def solve_for(
     position: str, remaining_minutes: int, opened_valves: tuple[str, ...]
 ) -> Generator[tuple[str, ...], None, None]:
+    """
+    Yields possible paths from the given position, with the given remaining minutes
+    and already-opened valves.
+    """
     for next in [
         v
         for v in valves.values()
@@ -56,17 +60,19 @@ def solve_for(
 
 
 def score_path(path: tuple[str, ...], remaining: int) -> int:
-    pressures = []
+    """
+    Scores a given path by taking into account the distance between valves
+    and the flow rate contributed by each valve.
+    """
+    total = 0
     flow_rate = 0
     curr = "AA"
     for valve in path:
         remaining -= distances[curr][valve] + 1
-        for _ in range(distances[curr][valve] + 1):
-            pressures.append(flow_rate)
+        total += (distances[curr][valve] + 1) * flow_rate
         flow_rate += valves[valve].flow_rate
         curr = valve
-    pressures += [flow_rate] * remaining
-    return sum(pressures)
+    return total + (flow_rate * remaining)
 
 
 # Parse valves from input.
