@@ -49,7 +49,7 @@ for i in range(int(1e12)):
         if rem == 0:
             # Keep going until we find the exact match for 1e12, since it makes life easier.
             new_height = state.height + cycles * (state.height - last_height)
-            print(f"Part 2: height is {new_height}")
+            print(f"Part 2: height after 1e12 rocks is {new_height}")
             break
     previous[(state.i_rock, state.i_jet)] = (i, state.height)
 
