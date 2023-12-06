@@ -11,8 +11,8 @@ fun main() {
 
 fun parseInputPart1(input: String): Map<Long, Long> {
     return input.lines()
-        .map {
-            it.split("\\s+".toRegex())
+        .map { line ->
+            line.split("\\s+".toRegex())
                 .drop(1) // ignore first column
                 .map { it.toLong() }
         }
