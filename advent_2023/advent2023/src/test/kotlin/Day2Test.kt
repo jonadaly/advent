@@ -10,14 +10,17 @@ class Day2Test {
         Game 4: 1 green, 3 red, 6 blue; 3 green, 6 red; 3 green, 15 blue, 14 red
         Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green
         """.trimIndent()
+    private val day2 = Day2()
 
     @Test
     fun `part 1 should work for test input`() {
-        getPossibleIndexSum(parseDay2Input(testInput)) shouldBe 8
+        day2.input = testInput
+        day2.solvePart1() shouldBe 8
     }
 
     @Test
     fun `part 2 should work for test input`() {
-        getPowerSum(parseDay2Input(testInput)) shouldBe 2286
+        day2.input = testInput
+        day2.solvePart2() shouldBe 2286
     }
 }
