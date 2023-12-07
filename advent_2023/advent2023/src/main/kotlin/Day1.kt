@@ -4,8 +4,7 @@ fun main() {
     println("Part 2: sum of calibration values is ${day1.solvePart2()}")
 }
 
-class Day1: BaseDay("/input1.txt") {
-
+class Day1 : BaseDay("/input1.txt") {
     override fun solvePart1(): Int {
         return calibrate(input)
     }

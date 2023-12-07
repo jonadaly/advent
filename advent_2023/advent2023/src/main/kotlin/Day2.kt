@@ -4,8 +4,7 @@ fun main() {
     println("Part 2: Sum of cube power is ${day2.solvePart2()}")
 }
 
-class Day2: BaseDay("/input2.txt") {
-
+class Day2 : BaseDay("/input2.txt") {
     override fun solvePart1(): Int {
         return getPossibleIndexSum(parseDay2Input(input))
     }
@@ -13,7 +12,6 @@ class Day2: BaseDay("/input2.txt") {
     override fun solvePart2(): Int {
         return getPowerSum(parseDay2Input(input))
     }
-
 
     private fun parseDay2Input(input: String): List<List<Triple<Int, Int, Int>>> {
         return input.lines()

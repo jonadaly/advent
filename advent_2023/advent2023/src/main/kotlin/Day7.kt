@@ -6,8 +6,7 @@ fun main() {
     println("Part 2: winnings total is ${day7.solvePart2()}")
 }
 
-class Day7: BaseDay("/input7.txt") {
-
+class Day7 : BaseDay("/input7.txt") {
     private enum class HandType(val value: Int) {
         FIVE_OF_A_KIND(7),
         FOUR_OF_A_KIND(6),
@@ -26,7 +25,6 @@ class Day7: BaseDay("/input7.txt") {
         return calculateWinnings(parseDay7Input(input), jacksWild = true)
     }
 
-
     private fun parseDay7Input(input: String): Map<String, Int> {
         return input.lines().map { it.split(" ") }.associate { it[0] to it[1].toInt() }
     }
@@ -41,8 +39,6 @@ class Day7: BaseDay("/input7.txt") {
             bid * (ind + 1)
         }.sum()
     }
-
-
 
     private fun getHandType(
         hand: String,

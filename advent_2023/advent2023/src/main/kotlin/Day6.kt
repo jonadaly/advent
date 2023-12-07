@@ -1,11 +1,10 @@
 fun main() {
-    val day6 =Day6()
+    val day6 = Day6()
     println("Part 1: Product of record count is ${day6.solvePart1()}")
     println("Part 2: Product of record count is ${day6.solvePart2()}")
 }
 
-class Day6: BaseDay("/input6.txt") {
-
+class Day6 : BaseDay("/input6.txt") {
     override fun solvePart1(): Int {
         return findRecordProduct(parseDay6InputPart1(input))
     }
@@ -13,7 +12,6 @@ class Day6: BaseDay("/input6.txt") {
     override fun solvePart2(): Int {
         return findRecordProduct(parseDay6InputPart2(input))
     }
-
 
     private fun parseDay6InputPart1(input: String): Map<Long, Long> {
         // Convert input into a map of duration to record (time to distance).
