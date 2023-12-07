@@ -1,12 +1,12 @@
 fun main() {
     val realInput = object {}.javaClass.getResource("/input2.txt")!!.readText()
-    val games = parseInput(realInput)
+    val games = parseDay2Input(realInput)
 
     println("Part 1: Sum of indexes of possible games is ${getPossibleIndexSum(games)}")
     println("Part 2: Sum of cube power is ${getPowerSum(games)}")
 }
 
-fun parseInput(input: String): List<List<Triple<Int, Int, Int>>> {
+fun parseDay2Input(input: String): List<List<Triple<Int, Int, Int>>> {
     return input.lines()
         .map { line ->
             line.split(":")[1].trim().split(";").map {

@@ -13,11 +13,11 @@ class Day2Test {
 
     @Test
     fun `part 1 should work for test input`() {
-        getPossibleIndexSum(parseInput(testInput)) shouldBe 8
+        getPossibleIndexSum(parseDay2Input(testInput)) shouldBe 8
     }
 
     @Test
     fun `part 2 should work for test input`() {
-        getPowerSum(parseInput(testInput)) shouldBe 2286
+        getPowerSum(parseDay2Input(testInput)) shouldBe 2286
     }
 }

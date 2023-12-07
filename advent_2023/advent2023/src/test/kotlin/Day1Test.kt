@@ -11,7 +11,7 @@ class Day1Test {
             a1b2c3d4e5f
             treb7uchet
             """.trimIndent()
-        calibrate(testInput) shouldBe 142
+        solveDay1(testInput) shouldBe 142
     }
 
     @Test
@@ -26,6 +26,6 @@ class Day1Test {
             zoneight234
             7pqrstsixteen
             """.trimIndent()
-        calibrate(replace(testInput)) shouldBe 281
+        solveDay1(replaceNumbers(testInput)) shouldBe 281
     }
 }
