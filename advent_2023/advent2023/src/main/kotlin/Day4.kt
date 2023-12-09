@@ -1,9 +1,9 @@
 import kotlin.math.pow
 
 fun main() {
-    val day4 = Day4()
-    println("Part 1: Total points is ${day4.solvePart1()}")
-    println("Part 2: Total scratchcards won is ${day4.solvePart2()}")
+    val day = Day4()
+    println("Part 1: Total points is ${day.solvePart1()}")
+    println("Part 2: Total scratchcards won is ${day.solvePart2()}")
 }
 
 class Day4 : BaseDay("/input4.txt") {
@@ -11,7 +11,7 @@ class Day4 : BaseDay("/input4.txt") {
 
     override fun solvePart1(): Int {
         val cards = parseInput(input)
-        return cards.map { countWinningNumbers(it)}.sumOf { if (it == 0) 0.0 else 2.0.pow(it - 1) }.toInt()
+        return cards.map { countWinningNumbers(it) }.sumOf { if (it == 0) 0.0 else 2.0.pow(it - 1) }.toInt()
     }
 
     override fun solvePart2(): Int {

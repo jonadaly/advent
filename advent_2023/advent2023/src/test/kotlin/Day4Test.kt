@@ -11,17 +11,17 @@ class Day4Test {
         Card 5: 87 83 26 28 32 | 88 30 70 12 93 22 82 36
         Card 6: 31 18 13 56 72 | 74 77 10 23 35 67 36 11
         """.trimIndent()
-    private val day4 = Day4()
+    private val day = Day4()
 
     @Test
     fun `part 1 should work for test input`() {
-        day4.input = testInput
-        day4.solvePart1() shouldBe 13
+        day.input = testInput
+        day.solvePart1() shouldBe 13
     }
 
     @Test
     fun `part 2 should work for test input`() {
-        day4.input = testInput
-        day4.solvePart2() shouldBe 30
+        day.input = testInput
+        day.solvePart2() shouldBe 30
     }
 }

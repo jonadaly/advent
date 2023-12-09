@@ -1,7 +1,7 @@
 fun main() {
-    val day2 = Day2()
-    println("Part 1: Sum of indexes of possible games is ${day2.solvePart1()}")
-    println("Part 2: Sum of cube power is ${day2.solvePart2()}")
+    val day = Day2()
+    println("Part 1: Sum of indexes of possible games is ${day.solvePart1()}")
+    println("Part 2: Sum of cube power is ${day.solvePart2()}")
 }
 
 class Day2 : BaseDay("/input2.txt") {

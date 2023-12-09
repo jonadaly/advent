@@ -1,9 +1,9 @@
 
 
 fun main() {
-    val day8 = Day8()
-    println("Part 1: total steps is ${day8.solvePart1()}")
-    println("Part 2: winnings total is ${day8.solvePart2()}")
+    val day = Day8()
+    println("Part 1: total steps is ${day.solvePart1()}")
+    println("Part 2: winnings total is ${day.solvePart2()}")
 }
 
 class Day8 : BaseDay("/input8.txt") {

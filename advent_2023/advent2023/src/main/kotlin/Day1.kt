@@ -1,7 +1,7 @@
 fun main() {
-    val day1 = Day1()
-    println("Part 1: sum of calibration values is ${day1.solvePart1()}")
-    println("Part 2: sum of calibration values is ${day1.solvePart2()}")
+    val day = Day1()
+    println("Part 1: sum of calibration values is ${day.solvePart1()}")
+    println("Part 2: sum of calibration values is ${day.solvePart2()}")
 }
 
 class Day1 : BaseDay("/input1.txt") {

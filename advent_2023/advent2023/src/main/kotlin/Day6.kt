@@ -1,7 +1,7 @@
 fun main() {
-    val day6 = Day6()
-    println("Part 1: Product of record count is ${day6.solvePart1()}")
-    println("Part 2: Product of record count is ${day6.solvePart2()}")
+    val day = Day6()
+    println("Part 1: Product of record count is ${day.solvePart1()}")
+    println("Part 2: Product of record count is ${day.solvePart2()}")
 }
 
 class Day6 : BaseDay("/input6.txt") {

@@ -2,11 +2,11 @@ import io.kotest.matchers.shouldBe
 import org.junit.jupiter.api.Test
 
 class Day8Test {
-    private val day8 = Day8()
+    private val day = Day8()
 
     @Test
     fun `part 1 should work for first test input`() {
-        day8.input =
+        day.input =
             """
             RL
             
@@ -18,12 +18,12 @@ class Day8Test {
             GGG = (GGG, GGG)
             ZZZ = (ZZZ, ZZZ)
             """.trimIndent()
-        day8.solvePart1() shouldBe 2
+        day.solvePart1() shouldBe 2
     }
 
     @Test
     fun `part 1 should work for second test input`() {
-        day8.input =
+        day.input =
             """
             LLR
 
@@ -31,12 +31,12 @@ class Day8Test {
             BBB = (AAA, ZZZ)
             ZZZ = (ZZZ, ZZZ)
             """.trimIndent()
-        day8.solvePart1() shouldBe 6
+        day.solvePart1() shouldBe 6
     }
 
     @Test
     fun `part 2 should work for test input`() {
-        day8.input =
+        day.input =
             """
             LR
             
@@ -49,6 +49,6 @@ class Day8Test {
             22Z = (22B, 22B)
             XXX = (XXX, XXX)
             """.trimIndent()
-        day8.solvePart2() shouldBe 6
+        day.solvePart2() shouldBe 6
     }
 }
