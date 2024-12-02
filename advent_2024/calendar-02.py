@@ -14,7 +14,7 @@ def is_safe(report: list[int]) -> bool:
     return is_safe_1 and is_safe_2
 
 
-def is_safe_with_dampener(report: list[int], dampener: bool = False) -> bool:
+def is_safe_with_dampener(report: list[int]) -> bool:
     for i in range(len(report)):
         this_report = report.copy()
         this_report.pop(i)
