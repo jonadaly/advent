@@ -36,7 +36,7 @@ def reorder(update: list[int]) -> list[int]:
 
 
 def reorder_2(update: list[int]) -> list[int]:
-    # A more readable version (but slightly less efficient because of the repeated list creation)
+    """A more readable version (but slightly less efficient because of the repeated list creation)"""
     while True:
         working = update[:]
         for i, curr in enumerate(working):
