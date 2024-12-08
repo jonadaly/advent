@@ -11,41 +11,21 @@ antenna_locations = {
 }
 
 
+def is_in_bounds(node: complex) -> bool:
+    return 0 <= node.real < city.shape[0] and 0 <= node.imag < city.shape[1]
+
+
 def find_antinodes(
     antenna_1: complex, antenna_2, consider_harmonics: bool
 ) -> set[complex]:
     difference = antenna_1 - antenna_2
-    new_antinodes = {antenna_1, antenna_2} if consider_harmonics else set()
-    current_node = antenna_1
-    while True:
-        next_node = current_node + difference
-        if (
-            next_node.real >= city.shape[0]
-            or next_node.real < 0
-            or next_node.imag >= city.shape[1]
-            or next_node.imag < 0
-        ):
-            break
-        new_antinodes.add(next_node)
-        current_node = next_node
-        if not consider_harmonics:
-            break
-
-    current_node = antenna_2
-    while True:
-        next_node = current_node - difference
-        if (
-            next_node.real >= city.shape[0]
-            or next_node.real < 0
-            or next_node.imag >= city.shape[1]
-            or next_node.imag < 0
-        ):
-            break
-        new_antinodes.add(next_node)
-        current_node = next_node
-        if not consider_harmonics:
-            break
-    return new_antinodes
+    max_possible_harmonics = abs(
+        min(int(city.shape[0] / difference.real), int(city.shape[1] / difference.imag))
+    )
+    my_range = range(0, max_possible_harmonics) if consider_harmonics else range(1, 2)
+    candidates_after = [antenna_1 + difference * i for i in my_range]
+    candidates_before = [antenna_2 - difference * i for i in my_range]
+    return {n for n in candidates_after + candidates_before if is_in_bounds(n)}
 
 
 antinodes = set()
