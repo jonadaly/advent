@@ -25,7 +25,7 @@ def is_valid_sum(
     return result in possible_results
 
 
-def solve(allow_concat: bool):
+def solve(allow_concat: bool) -> int:
     operators = [operator.mul, operator.add]
     if allow_concat:
         operators.append(concat)
