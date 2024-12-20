@@ -35,6 +35,8 @@ def manhattan_distance(a: complex, b: complex) -> int:
 
 
 def get_cheats(cheat_range: int) -> Counter[int]:
+    # There's an easier/faster way to do this by comparing pairs of points on the track and checking
+    # whether the Manhattan distance is less than cheat_range, but I'm too lazy to do that now.
     seqs = {
         complex(i, j)
         for i in range(-cheat_range, cheat_range + 1)
