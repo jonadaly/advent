@@ -28,7 +28,7 @@ while True:
 
 
 def get_integer(label: str) -> int:
-    outputs = {k: v for k, v in wires.items() if v.startswith(label)}
+    outputs = {k: v for k, v in wires.items() if k.startswith(label)}
     return int(
         "".join(str(outputs[k]) for k in sorted(outputs.keys(), reverse=True)), 2
     )
