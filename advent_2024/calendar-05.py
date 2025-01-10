@@ -1,7 +1,6 @@
 from collections import defaultdict
 from pathlib import Path
 
-# Parse the input
 raw_rules, raw_updates = Path("05.txt").read_text().strip().split("\n\n")
 updates = [
     list(map(int, raw_update.split(","))) for raw_update in raw_updates.split("\n")
