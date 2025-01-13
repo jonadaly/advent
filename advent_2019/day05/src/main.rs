@@ -13,10 +13,11 @@ fn run_program(program: &[i64], some_input: i64) -> i64 {
             // Get the parameter at position $pos, either by value or by address based on the "mode".
             ($pos:literal) => {{
                 let mode = instruction_code / 10i64.pow($pos as u32 + 1) % 10;
+                let param = mem[ptr + $pos];
                 if mode == 0 {
-                    mem[mem[ptr + $pos] as usize]
+                    mem[param as usize]
                 } else {
-                    mem[ptr + $pos]
+                    param
                 }
             }};
         }
@@ -48,25 +49,25 @@ fn run_program(program: &[i64], some_input: i64) -> i64 {
                 ptr += 2;
             }
             5 => {
-                ptr = if param!(1) != 0 {
-                    param!(2) as usize
+                if param!(1) != 0 {
+                    ptr = param!(2) as usize
                 } else {
-                    ptr + 3
+                    ptr += 3
                 };
             }
             6 => {
-                ptr = if param!(1) == 0 {
-                    param!(2) as usize
+                if param!(1) == 0 {
+                    ptr = param!(2) as usize
                 } else {
-                    ptr + 3
+                    ptr += 3
                 };
             }
             7 => {
-                set_memory_to!(3, if param!(1) < param!(2) { 1 } else { 0 });
+                set_memory_to!(3, (param!(1) < param!(2)) as i64);
                 ptr += 4;
             }
             8 => {
-                set_memory_to!(3, if param!(1) == param!(2) { 1 } else { 0 });
+                set_memory_to!(3, (param!(1) == param!(2)) as i64);
                 ptr += 4;
             }
             99 => return output,
