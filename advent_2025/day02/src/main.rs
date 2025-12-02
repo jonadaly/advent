@@ -17,8 +17,8 @@ fn main() {
         .trim()
         .split(',')
         .map(|x| {
-            let parts: Vec<&str> = x.split('-').collect();
-            (parts[0].parse().unwrap(), parts[1].parse().unwrap())
+            let (start, end) = x.split_once('-').unwrap();
+            (start.parse().unwrap(), end.parse().unwrap())
         })
         .collect();
 
