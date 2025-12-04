@@ -16,11 +16,9 @@ fn calculate_joltage(bank: &[u32], batteries: usize) -> u128 {
         digits.push(max_val);
     }
     // Combine digits into a single number.
-    let number = digits
+    digits
         .iter()
-        .fold(0 as u128, |acc, elem| acc * 10 + *elem as u128);
-    println!("number: {}", number);
-    number
+        .fold(0u128, |acc, elem| acc * 10 + *elem as u128)
 }
 
 fn main() {
