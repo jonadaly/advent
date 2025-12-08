@@ -33,13 +33,13 @@ fn main() {
             let (start, end) = x.split_once("-").unwrap();
             (
                 i as u64,
-                (start.parse::<u64>().unwrap(), end.parse::<u64>().unwrap()),
+                (start.parse().unwrap(), end.parse().unwrap()),
             )
         })
         .collect();
 
     let ids: Vec<u64> = ids_raw.lines().map(|x| x.parse::<u64>().unwrap()).collect();
-    let fresh_count_p1 = ids.iter().filter(|&&id| is_fresh(&ranges, id)).count();
+    let fresh_count_p1 = ids.into_iter().filter(|&id| is_fresh(&ranges, id)).count();
 
     loop {
         let len_before = ranges.len();
