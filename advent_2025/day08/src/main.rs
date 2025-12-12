@@ -23,6 +23,7 @@ impl DisjointSet {
         Self { parents, sizes }
     }
 
+    // Find the root of the set containing the given box.
     fn find(&mut self, my_box: &BoxCoord) -> BoxCoord {
         let parent = *self.parents.get(my_box).unwrap();
         if parent == *my_box {
@@ -34,6 +35,7 @@ impl DisjointSet {
         root
     }
 
+    // Merge two sets into one.
     fn merge(&mut self, box1: BoxCoord, box2: BoxCoord) {
         let root1 = self.find(&box1);
         let root2 = self.find(&box2);
